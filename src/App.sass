@@ -1,0 +1,190 @@
+$mineral-green: rgb(72, 92, 90)
+$lochinvar: rgb(89, 142, 132)
+$horizon: rgb(200, 211, 207)
+$copperfield: rgb(196, 148, 115)
+$cashmere: rgb(233, 210, 198)
+$soft-amber: rgb(205, 192, 178)
+$whitesmoke: #f5f5f5
+
+@font-face
+  font-family: 'dk_pisangregular'
+  src: url('./fonts/dk_pisang-webfont.woff2') format('woff2'),
+  src: url('./fonts/dk_pisang-webfont.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
+      /*######### NAV BAR STYLING #########*/
+.nav-bar
+  position: -webkit-sticky
+  position: sticky
+  top: 0
+  padding-top: 10
+  font-size: 35px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  font-family: 'dk_pisangregular'
+  background-color: $cashmere
+  z-index: 2
+
+  & p
+    margin: 0
+    padding-left: 15px
+    display: flex
+    align-items: center
+
+  & ul
+    padding-right: 5px
+    margin: 0
+    display: flex
+    justify-content: flex-end
+    flex-direction: row
+    font-size: 20px
+    list-style: none
+
+    & li
+      padding: 10px
+    /*######### SCOLLOP HEADING STYLING #########*/
+.scallop
+  position: relative
+  background: $whitesmoke
+  padding: 2px
+
+  & p
+    position: relative
+    text-align: center
+    color: rgb(89, 142, 132)
+    font-size: 40px
+    text-transform: uppercase
+    font-family: 'dk_pisangregular'
+    line-height: 20px
+
+  &::after
+    position: absolute
+    bottom: -20px
+    left: 0px
+    width: 100%
+    content: " "
+    background: radial-gradient(circle at 50% 0%, whitesmoke 25%, rgb(219, 200, 189) 26%, $cashmere 40%)
+    // background-color: whitesmoke
+    background-size: 40px 100px
+    height: 50px
+    background-repeat: repeat-x
+
+      /*######### SIGN-IN STYLING #########*/
+.login-page
+  display: flex
+  flex-direction: row
+
+.login-image
+  height: 100%
+  width: 40%
+
+.after-scallop
+  background: $horizon
+  padding: 20px
+  margin-bottom: 20px
+  height: 100vh
+
+.outer-modal
+  width: 65%
+  background: radial-gradient(circle, $lochinvar, $mineral-green, )
+  opacity: .8
+  height: 100vh
+  // padding: 100px
+
+.main-form
+  background: rgba( 255, 255, 255, 0.5 )
+  box-shadow: 0 8px 32px 0 #222c2b5b
+  backdrop-filter: blur( 8px )
+  -webkit-backdrop-filter: blur( 8px )
+  border-radius: 20px
+  display: flex
+  flex-direction: column
+  padding: 25px 35px
+  justify-content: center
+  align-items: center
+  position: absolute
+  top: 50%
+  left: 70%
+  transform: translate(-50%, -50%)
+
+  & .logo
+    width: 50px
+    height: 50px
+
+.button:hover
+  color: #fff
+  background: $mineral-green
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.4)
+
+.button
+  transition: all 100ms
+  text-align: center
+  padding: 10px 16px 10px 16px
+  border-radius: 6px
+  border: none
+  outline: none
+  font-size: 15px
+  background: rgba( 255, 255, 255, 0.7)
+  box-shadow: 0 8px 32px 0 rgba(72, 92, 90, 0.37 )
+  font-family: 'Open Sans', sans-serif
+  font-weight: bold
+
+.inp::placeholder
+  background: black
+  opacity: .6
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  font-weight: bold
+
+.inp
+  transition: all 100ms
+  font-family: 'Open Sans', sans-serif
+  font-weight: 600
+  height: 40px
+  margin: 10px
+  border-radius: 6px
+  border: none
+  outline: none
+  font-size: 16px
+  background: rgba( 255, 255, 255, 0.6)
+  box-shadow: 0 8px 32px 0 rgba( 72, 92, 90, 0.37 )
+  backdrop-filter: blur( 4px )
+  -webkit-backdrop-filter: blur( 4px )
+  padding-left: 20px
+
+.inp:focus
+  background: rgba( 255, 255, 255, 0.05 )
+  box-shadow: 0 8px 32px 0 rgba( 72, 92, 90, 0.37 )
+  backdrop-filter: blur( 1.0px )
+  -webkit-backdrop-filter: blur( 1.0px )
+
+hr
+  border: solid
+  background-color: #fff
+  border-width: 1px
+  opacity: .5
+  color: #fff
+  width: 90%
+
+  /*######### CARD STYLING #########*/
+
+.card-container
+  display: flex
+  flex-wrap: wrap
+  justify-content: left
+
+.craft-card
+  margin: 20px
+  height: 300px
+  width: 300px
+  box-shadow: 1px 1px 3px $mineral-green
+  background-color: $mineral-green
+  display: flex
+  align-items: center
+  justify-content: center
+
+.craft-card img
+  border-radius: 30px
+  height: 100%

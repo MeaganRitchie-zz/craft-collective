@@ -4,7 +4,7 @@ import Logo from '../images/pencil-and-paint-brush.png'
 export default function NavBar() {
   return (
     <header className="nav-bar">
-      <p>The Craft Collective</p>
+      <p>Craft Collective</p>
       <nav>
         <ul>
           <li><a href="#">browse crafts</a></li>

@@ -4,7 +4,7 @@ import Logo from '../images/pencil-and-paint-brush.png'
 import { Component } from 'react'
 import ScallopedHeader from './ScallopedHeader'
 
-export default class SigninModal extends Component {
+export default class SignUp extends Component {
 
   state = {
     firstName: "",
@@ -21,6 +21,7 @@ export default class SigninModal extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.signUp(this.state)
+    // this.props.setIsLoggedIn(true)
   }
 
   render() {

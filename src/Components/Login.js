@@ -6,25 +6,23 @@ import { Component } from 'react'
 export default class SignUp extends Component {
 
   state = {
-    firstName: "",
-    lastName: "",
     username: "",
     password: "",
   }
-
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.props.signUp(this.state)
-  }
 
   changeLoggedInState = () => {
     this.props.setIsLoggedIn(false)
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.login(this.state.username, this.state.password)
   }
 
   render() {
@@ -32,14 +30,15 @@ export default class SignUp extends Component {
       <div className="login-page">
         <img className="login-image" src={Image} alt="knitting" />
         <div className="outer-modal">
-          <div id="login-form" className="main-form">
+          <form onSubmit={this.handleSubmit} id="login-form" className="main-form">
             <img className="logo" src={Logo} alt="pencil and paintbrush logo"></img>
-            <div><input type="text" className="inp" placeholder="Username" /></div>
-            <div><input type="password" className="inp" id="inputpswd" placeholder="Password" /></div>
-            <div style={{ "text-align": "center" }}> <button className="button">Login</button></div>
+            <div><input name="username" value={this.state.username} className="inp" onChange={this.handleChange} placeholder="Username" /></div>
+            <div><input type="password" name="password" value={this.state.password} className="inp" onChange={this.handleChange} placeholder="Password" /></div>
+            {this.props.error ? <p style={{ "color": "rgb(196, 148, 115)" }}>{this.props.error}</p> : null}
+            <div style={{ "text-align": "center" }}> <input type="submit" value="Login" className="button" /></div>
             <hr></hr>
             <div style={{ "text-align": "center" }}> <button onClick={this.changeLoggedInState} className="button">Sign Up</button></div>
-          </div>
+          </form>
         </div >
       </div>
     )

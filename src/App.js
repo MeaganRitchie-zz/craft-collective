@@ -1,16 +1,39 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ScallopedHeader from './Components/ScallopedHeader';
-import SignUp from './Components/SignUp';
 import NavBar from './Components/NavBar';
-import Login from './Components/Login'
+import EnterForms from './Components/EnterForms'
+import EditForm from './Components/EditForm'
+
+
+const baseUrl = "http://localhost:3000/"
 
 function App() {
   const [user, setUser] = useState({})
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    let token = localStorage.getItem("token") /*put this in it's own function and send around to toher components if needed*/
+    if (token) {
+      fetch(baseUrl + "profile", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+        .then(response => response.json())
+        .then(user => {
+          if (user.id) {
+            setUser(user)
+          }
+        })
+    }
+
+  }, [])
 
   const signUp = (user) => {
-    fetch("http://localhost:3000/users", {
+    fetch(baseUrl + "users", {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -25,18 +48,44 @@ function App() {
       })
     })
       .then(response => response.json())
-      .then(user => setUser(user))
+      .then(newUser => {
+        setUser(newUser)
+        localStorage.setItem("token", newUser.token)
+      })
+  }
+
+  const login = (username, password) => {
+    fetch(baseUrl + "login", {
+      method: "POST",
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username,
+          password
+        }
+      })
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.token) {
+          localStorage.setItem('token', result.token)
+          setUser(result.user)
+        } else {
+          setError(result.error)
+        }
+      })
   }
 
   return (
     <>
-      <NavBar />
-      {isLoggedIn ?
-        <Login setIsLoggedIn={setIsLoggedIn} /> :
-        <SignUp signUp={signUp} user={user} />
-      }
-
-      <ScallopedHeader />
+      <NavBar setUser={setUser} />
+      {/* {user.username
+        ? <ScallopedHeader user={user} />
+        : <EnterForms login={login} signUp={signUp} error={error} user={user} />
+      } */}
+      <EditForm />
 
     </>
   );

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 @font-face {
   font-family: "dk_pisangregular";
   src: url("./fonts/dk_pisang-webfont.woff2") format("woff2");
@@ -25,6 +26,10 @@
   display: flex;
   align-items: center;
 }
+.nav-bar p img {
+  width: 27px;
+  padding-right: 10px;
+}
 .nav-bar ul {
   padding-right: 5px;
   margin: 0;
@@ -33,25 +38,47 @@
   flex-direction: row;
   font-size: 20px;
   list-style: none;
-  /*######### SCOLLOP HEADING STYLING #########*/
 }
 .nav-bar ul li {
   padding: 10px;
 }
 
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #598e84;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #598e84;
+  text-decoration: underline;
+  /*######### SCOLLOP HEADING STYLING #########*/
+}
+
 .scallop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
   background: #f5f5f5;
   padding: 2px;
 }
-.scallop p {
+.scallop h4 {
   position: relative;
   text-align: center;
   color: #598e84;
   font-size: 40px;
-  text-transform: uppercase;
-  font-family: "dk_pisangregular";
-  line-height: 20px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding-bottom: 0px;
+  text-shadow: 2px 2px rgba(89, 142, 132, 0.3);
 }
 .scallop::after {
   position: absolute;
@@ -63,6 +90,36 @@
   background-size: 40px 100px;
   height: 50px;
   background-repeat: repeat-x;
+}
+
+#username {
+  position: relative;
+  text-align: center;
+  color: #598e84;
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  margin-top: 0px;
+}
+
+#crafts-title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #598e84;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-family: "dk_pisangregular";
+  line-height: 45px;
+  border: 2px solid #598e84;
+  box-shadow: 1px 1px 4px rgba(72, 92, 90, 0.4);
+  border-radius: 40px;
+  padding-top: 5px;
+  width: 200px;
+  margin-bottom: 30px;
+  margin-top: 5px;
   /*######### SIGN-IN STYLING #########*/
 }
 
@@ -72,8 +129,8 @@
 }
 
 .login-image {
-  height: 100%;
-  width: 40%;
+  height: auto;
+  max-width: 40%;
 }
 
 .after-scallop {
@@ -127,7 +184,7 @@
   font-size: 15px;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 8px 32px 0 rgba(72, 92, 90, 0.37);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
 
@@ -141,7 +198,7 @@
 
 .inp {
   transition: all 100ms;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   height: 40px;
   margin: 10px;
@@ -174,26 +231,104 @@ hr {
 }
 
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-}
-
-.craft-card {
-  margin: 20px;
-  height: 300px;
+  position: relative;
   width: 300px;
-  box-shadow: 1px 1px 3px #485c5a;
-  background-color: #485c5a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden
 }
 
-.craft-card img {
+img.card-image {
+  margin: 20px;
+  width: 300px;
   border-radius: 30px;
-  width: 100%
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+
+.card-container i {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-size: 25px;
+  color: #f5f5f5;
+  /*######### EDIT FORM #########*/
+}
+
+.edit-container {
+  background-color: #c49473;
+  opacity: 0.7;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-form {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 #222c2b5b;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 35px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 300px;
+}
+.edit-form input {
+  transition: all 100ms;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  height: 40px;
+  width: 90%;
+  margin: 5px;
+  margin-top: 0px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(72, 92, 90, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding-left: 20px;
+}
+.edit-form label {
+  color: #485c5a;
+  opacity: 1;
+  font-family: "Poppins";
+  margin-top: 10px;
+}
+
+textarea {
+  transition: all 100ms;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  width: 90%;
+  margin: 5px;
+  margin-top: 0px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(72, 92, 90, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 5px 3px 3px 20px;
+}
+
+#edit-button {
+  width: 100px;
+  display: flex;
+}
+
+#delete-button {
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e64747e2;
 }
 
 /*# sourceMappingURL=App.css.map */

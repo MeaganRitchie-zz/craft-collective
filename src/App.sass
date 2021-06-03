@@ -6,6 +6,8 @@ $cashmere: rgb(233, 210, 198)
 $soft-amber: rgb(205, 192, 178)
 $whitesmoke: #f5f5f5
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap')
+
 @font-face
   font-family: 'dk_pisangregular'
   src: url('./fonts/dk_pisang-webfont.woff2') format('woff2'),
@@ -32,6 +34,9 @@ $whitesmoke: #f5f5f5
     padding-left: 15px
     display: flex
     align-items: center
+    & img
+      width: 27px
+      padding-right: 10px
 
   & ul
     padding-right: 5px
@@ -44,20 +49,40 @@ $whitesmoke: #f5f5f5
 
     & li
       padding: 10px
+
+a:link
+  color: black
+  text-decoration: none
+
+a:visited
+  color: $lochinvar
+  text-decoration: none
+
+a:hover
+  color: $lochinvar
+  text-decoration: underline
+
     /*######### SCOLLOP HEADING STYLING #########*/
 .scallop
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
   position: relative
   background: $whitesmoke
   padding: 2px
 
-  & p
+  & h4
     position: relative
     text-align: center
     color: rgb(89, 142, 132)
     font-size: 40px
-    text-transform: uppercase
-    font-family: 'dk_pisangregular'
-    line-height: 20px
+    font-weight: 500
+    font-family: 'Poppins', sans-serif
+    margin-bottom: 0px
+    margin-top: 10px
+    padding-bottom: 0px
+    text-shadow: 2px 2px rgba(89, 142, 132, .3)
 
   &::after
     position: absolute
@@ -66,10 +91,37 @@ $whitesmoke: #f5f5f5
     width: 100%
     content: " "
     background: radial-gradient(circle at 50% 0%, whitesmoke 25%, rgb(219, 200, 189) 26%, $cashmere 40%)
-    // background-color: whitesmoke
     background-size: 40px 100px
     height: 50px
     background-repeat: repeat-x
+
+#username
+  position: relative
+  text-align: center
+  color: rgb(89, 142, 132)
+  font-size: 25px
+  font-family: 'Poppins', sans-serif
+  font-weight: 200
+  margin-top: 0px
+
+#crafts-title
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  color: rgb(89, 142, 132)
+  font-size: 40px
+  text-transform: uppercase
+  font-family: 'dk_pisangregular'
+  line-height: 45px
+  border: 2px solid $lochinvar
+  box-shadow: 1px 1px 4px rgba(72, 92, 90, .4)
+  border-radius: 40px
+  padding-top: 5px
+  width: 200px
+  margin-bottom: 30px
+  margin-top: 5px
 
       /*######### SIGN-IN STYLING #########*/
 .login-page
@@ -128,7 +180,7 @@ $whitesmoke: #f5f5f5
   font-size: 15px
   background: rgba( 255, 255, 255, 0.7)
   box-shadow: 0 8px 32px 0 rgba(72, 92, 90, 0.37 )
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Poppins', sans-serif
   font-weight: bold
 
 .inp::placeholder
@@ -140,7 +192,7 @@ $whitesmoke: #f5f5f5
 
 .inp
   transition: all 100ms
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Poppins', sans-serif
   font-weight: 600
   height: 40px
   margin: 10px
@@ -168,23 +220,98 @@ hr
   color: #fff
   width: 90%
 
-  /*######### CARD STYLING #########*/
+    /*######### CARD STYLING #########*/
 
 .card-container
-  display: flex
-  flex-wrap: wrap
-  justify-content: left
+  position: relative
+  width: 300px
 
-.craft-card
+img.card-image
   margin: 20px
-  height: 100px
-  width: 50px
-  box-shadow: 1px 1px 3px $mineral-green
-  background-color: $mineral-green
-  display: flex
-  align-items: center
-  justify-content: center
-
-.craft-card img
+  width: 300px
   border-radius: 30px
-  height: 100%
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4)
+  display: block
+
+.card-container i
+  position: absolute
+  top: 20px
+  right: 0
+  font-size: 25px
+  color: $whitesmoke
+
+    /*######### EDIT FORM #########*/
+
+.edit-container
+  background-color: $copperfield
+  opacity: 0.7
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+.edit-form
+  background: rgba( 255, 255, 255, 0.5 )
+  box-shadow: 0 8px 32px 0 #222c2b5b
+  backdrop-filter: blur( 8px )
+  -webkit-backdrop-filter: blur( 8px )
+  border-radius: 20px
+  display: flex
+  flex-direction: column
+  padding: 25px 35px
+  justify-content: center
+  align-items: center
+  position: absolute
+  width: 300px
+
+  & input
+    transition: all 100ms
+    font-family: 'Poppins', sans-serif
+    font-weight: 600
+    height: 40px
+    width: 90%
+    margin: 5px
+    margin-top: 0px
+    border-radius: 6px
+    border: none
+    outline: none
+    font-size: 16px
+    background: rgba( 255, 255, 255, 0.6)
+    box-shadow: 0 8px 32px 0 rgba( 72, 92, 90, 0.37 )
+    backdrop-filter: blur( 4px )
+    -webkit-backdrop-filter: blur( 4px )
+    padding-left: 20px
+
+  & label
+    color: $mineral-green
+    opacity: 1
+    font-family: "Poppins"
+    margin-top: 10px
+
+textarea
+  transition: all 100ms
+  font-family: 'Poppins', sans-serif
+  font-weight: 600
+  width: 90%
+  margin: 5px
+  margin-top: 0px
+  border-radius: 7px
+  border: none
+  outline: none
+  font-size: 16px
+  background: rgba( 255, 255, 255, 0.6)
+  box-shadow: 0 8px 32px 0 rgba( 72, 92, 90, 0.37 )
+  backdrop-filter: blur( 4px )
+  -webkit-backdrop-filter: blur( 4px )
+  padding: 5px 3px 3px 20px
+
+#edit-button
+  width: 100px
+  display: flex
+
+#delete-button
+  width: 70px
+  display: flex
+  justify-content: center
+  align-items: center
+  background: #e64747e2

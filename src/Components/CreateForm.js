@@ -1,41 +1,57 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class EditForm extends Component {
+export default function CreateForm(props) {
 
-  state = {
-    craftTitle: "",
-    craftImage: "",
-    craftSupplies: "",
-    craftDirections: ""
-  }
+  const handleTitleChange = event => props.setTitle(event.target.value)
+  const handleImageChange = event => props.setImage(event.target.value)
+  const handleSuppliesChange = event => props.setSupplies(event.target.value)
+  const handleDirectionsChange = event => props.setDirections(event.target.value)
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
+  const submitNewCraft = () => {
+    let token = localStorage.getItem("token")
+    fetch("http://localhost:3000/crafts", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: props.title,
+        image: props.image,
+        supplylist: props.supplies,
+        description: props.directions,
+        user_id: props.user.id
+      })
     })
+      .then(response => response.json())
+      .then(user => props.setUser(user))
   }
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    /*function to set state to inputs
-    POST req to create method*/
+    closeModal()
+    submitNewCraft()
   }
 
-  render() {
-    return (
-      <div className="edit-container">
-        <form className="edit-form">
-          <label>Craft Title</label>
-          <input name="crafTitle" value={this.state.craftTitle} onChange={this.handleChange} />
-          <label>Image</label>
-          <input name="craftImage" value={this.state.craftImage} onChange={this.handleChange} />
-          <label>Supply List</label>
-          <textarea rows={5} id="supplies" name="craftSupplies" value={this.state.craftSupplies} onChange={this.handleChange} />
-          <label>Directions</label>
-          <textarea rows={5} id="directions" name="craftDirections" value={this.state.craftDirections} onChange={this.handleChange} />
-          <input id="edit-button" type="submit" value="Create" />
-        </form>
-      </div>
-    )
+  const closeModal = (_) => {
+    props.setCreateNew(false)
   }
+
+  return (
+    <div className="edit-container">
+      <form onSubmit={handleSubmit} id="edit-form" className="edit-form">
+        <label>Craft Title</label>
+        <input name="title" value={props.title} onChange={handleTitleChange} />
+        <label>Image</label>
+        <input name="image" value={props.image} onChange={handleImageChange} />
+        <label>Supply List</label>
+        <textarea rows={5} id="supplies" name="supplies" value={props.supplies} onChange={handleSuppliesChange} />
+        <label>Directions</label>
+        <textarea rows={5} id="directions" name="directions" value={props.directions} onChange={handleDirectionsChange} />
+        <input id="edit-button" type="submit" value="Create" />
+      </form>
+    </div>
+  )
+
 }

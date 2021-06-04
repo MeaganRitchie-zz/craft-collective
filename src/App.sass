@@ -2,6 +2,7 @@ $mineral-green: rgb(72, 92, 90)
 $lochinvar: rgb(89, 142, 132)
 $horizon: rgb(200, 211, 207)
 $copperfield: rgb(196, 148, 115)
+$copperfield-see-through: rgba(196, 148, 115, 0.8)
 $cashmere: rgb(233, 210, 198)
 $soft-amber: rgb(205, 192, 178)
 $whitesmoke: #f5f5f5
@@ -20,6 +21,7 @@ $whitesmoke: #f5f5f5
   position: -webkit-sticky
   position: sticky
   top: 0
+  color: $mineral-green
   padding-top: 10
   font-size: 35px
   display: flex
@@ -111,15 +113,15 @@ a:hover
   align-items: center
   text-align: center
   color: rgb(89, 142, 132)
-  font-size: 40px
+  font-size: 35px
   text-transform: uppercase
   font-family: 'dk_pisangregular'
-  line-height: 45px
+  line-height: 40px
   border: 2px solid $lochinvar
   box-shadow: 1px 1px 4px rgba(72, 92, 90, .4)
   border-radius: 40px
   padding-top: 5px
-  width: 200px
+  width: 180px
   margin-bottom: 30px
   margin-top: 5px
 
@@ -135,8 +137,9 @@ a:hover
 .after-scallop
   background: $horizon
   padding: 20px
-  margin-bottom: 20px
-  height: 100vh
+  z-index: 0
+  height: 1000px
+  position: relative
 
 .outer-modal
   width: 65%
@@ -221,37 +224,103 @@ hr
   width: 90%
 
     /*######### CARD STYLING #########*/
+.display-cards
+  display: flex
+  flex-direction: space-between
+  flex-wrap: wrap
+  justify-content: center
+
+.create-new
+  width: 300px
+  font-size: 45px
+  color: $mineral-green
+  margin: 40px
+  display: flex
+  justify-content: center
+  align-items: center
+  i
+    cursor: pointer
 
 .card-container
-  position: relative
-  width: 300px
+  display: flex
+  justify-content: space-evenly
+  align-items: center
+  margin: 1rem
 
-img.card-image
-  margin: 20px
-  width: 300px
-  border-radius: 30px
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4)
-  display: block
+  .main-card
+    cursor: pointer
+    i
+      position: absolute
+      top: 15px
+      right: 10px
+      font-size: 25px
+      color: $whitesmoke
+      text-shadow: 0px 0px 2px black
+    .card-image
+      width: 300px
+      border-radius: 30px
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4)
+      display: block
 
-.card-container i
-  position: absolute
-  top: 20px
-  right: 0
-  font-size: 25px
-  color: $whitesmoke
+  .inner-card
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: relative
+    width: 300px
 
-    /*######### EDIT FORM #########*/
+  #card-details
+    background: $copperfield
+    position: relative
+    z-index: -1
+    display: flex
+    justify-content: center
+    color: $whitesmoke
+    border-radius: 0px 20px 20px 0px
+    transform: translateX(-30px)
+    width: 0
+    padding-left: 10px
+    transition: width 1s ease-out
+    h3
+      font-family: 'dk_pisangregular'
+      font-size: 35px
+      margin: 0px
+    h4
+      font-family: 'dk_pisangregular'
+      font-size: 25px
+      margin-bottom: 0px
+      margin-top: 20px
+    p
+      font-family: "Poppins"
+      font-weight: 200
+      margin: 0px
+    &.grow
+      width: 350px
+    .card-detail
+      overflow: hidden
+      text-overflow: clip
+      white-space: nowrap
+      max-width: 500px
+      transition: max-width 1s ease-out
+    .text-shrink
+      overflow: hidden
+      max-width: 0
+      transition: max-width 2s ease
 
+/*######### EDIT FORM #########*/
 .edit-container
-  background-color: $copperfield
-  opacity: 0.7
+  background-color: $copperfield-see-through
+  width: 100vw
   height: 100vh
   display: flex
   justify-content: center
   align-items: center
+  position: absolute
+  z-index: 500
 
-.edit-form
-  background: rgba( 255, 255, 255, 0.5 )
+#edit-form
+  background: rgba(255, 255, 255)
+  opacity: 1
   box-shadow: 0 8px 32px 0 #222c2b5b
   backdrop-filter: blur( 8px )
   -webkit-backdrop-filter: blur( 8px )
@@ -262,9 +331,11 @@ img.card-image
   justify-content: center
   align-items: center
   position: absolute
+  z-index: 1000
   width: 300px
 
   & input
+    cursor: pointer
     transition: all 100ms
     font-family: 'Poppins', sans-serif
     font-weight: 600
@@ -276,9 +347,9 @@ img.card-image
     border: none
     outline: none
     font-size: 16px
-    background: rgba( 255, 255, 255, 0.6)
+    background: rgba( 255, 255, 255, 0.8)
     box-shadow: 0 8px 32px 0 rgba( 72, 92, 90, 0.37 )
-    backdrop-filter: blur( 4px )
+    backdrop-filter: blur( 2px )
     -webkit-backdrop-filter: blur( 4px )
     padding-left: 20px
 
@@ -299,7 +370,7 @@ textarea
   border: none
   outline: none
   font-size: 16px
-  background: rgba( 255, 255, 255, 0.6)
+  background: rgba( 255, 255, 255, 0.8)
   box-shadow: 0 8px 32px 0 rgba( 72, 92, 90, 0.37 )
   backdrop-filter: blur( 4px )
   -webkit-backdrop-filter: blur( 4px )
@@ -315,3 +386,20 @@ textarea
   justify-content: center
   align-items: center
   background: #e64747e2
+
+.footer
+  position: -webkit-sticky
+  position: sticky
+  bottom: 0
+  height: 30px
+  font-size: 15px
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: 'dk_pisangregular'
+  background-color: $whitesmoke
+  z-index: 2
+
+  & img
+    width: 17px
+    padding-right: 10px

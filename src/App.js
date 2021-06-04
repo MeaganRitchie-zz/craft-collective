@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import ScallopedHeader from './Components/ScallopedHeader';
 import NavBar from './Components/NavBar';
 import EnterForms from './Components/EnterForms'
-import EditForm from './Components/EditForm'
+import Footer from './Components/Footer'
 
 
 const baseUrl = "http://localhost:3000/"
@@ -81,11 +81,15 @@ function App() {
   return (
     <>
       <NavBar setUser={setUser} />
-      {/* {user.username
-        ? <ScallopedHeader user={user} />
-        : <EnterForms login={login} signUp={signUp} error={error} user={user} />
-      } */}
-      <EditForm />
+
+      {user.username
+        ? <ScallopedHeader user={user} setUser={setUser} />
+        : <EnterForms setUser={setUser} login={login} signUp={signUp} error={error} user={user} />
+      }
+      {/* <EditForm />
+      <CreateForm /> */}
+      <Footer />
+
 
     </>
   );

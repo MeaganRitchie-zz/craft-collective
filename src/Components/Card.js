@@ -1,17 +1,25 @@
 import React from 'react'
 import '../Card.css'
+import CardFront from './CardFront'
+import CardDetails from './CardDetails'
+import { useState } from 'react'
 
-export default function Card() {
+export default function Card(props) {
 
   /*const openEditForm = () => {
     set form state to open - modal opens
     render form component
   }*/
+  const [detailsClicked, setDetailsClicked] = useState(false)
+
+  const handleClick = (_) => {
+    setDetailsClicked(!detailsClicked)
+  }
 
   return (
     <div className="card-container">
-      <i className="far fa-edit"></i>
-      <img className="card-image" src="https://images.unsplash.com/photo-1577547078777-ff1088d792b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80" alt="" />
+      <CardFront craft={props.craft} handleClick={handleClick} />
+      <CardDetails craft={props.craft} detailsClicked={detailsClicked} />
     </div>
   )
 }

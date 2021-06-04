@@ -3,7 +3,7 @@ import Image from '../images/signinpage.jpg'
 import Logo from '../images/pencil-and-paint-brush.png'
 import { Component } from 'react'
 
-export default class SignUp extends Component {
+export default class Login extends Component {
 
   state = {
     username: "",
@@ -35,9 +35,9 @@ export default class SignUp extends Component {
             <div><input name="username" value={this.state.username} className="inp" onChange={this.handleChange} placeholder="Username" /></div>
             <div><input type="password" name="password" value={this.state.password} className="inp" onChange={this.handleChange} placeholder="Password" /></div>
             {this.props.error ? <p style={{ "color": "rgb(196, 148, 115)" }}>{this.props.error}</p> : null}
-            <div style={{ "text-align": "center" }}> <input type="submit" value="Login" className="button" /></div>
+            <div style={{ "textAlign": "center" }}> <input type="submit" value="Login" className="button" /></div>
             <hr></hr>
-            <div style={{ "text-align": "center" }}> <button onClick={this.changeLoggedInState} className="button">Sign Up</button></div>
+            <div style={{ "textAlign": "center" }}> <button onClick={this.changeLoggedInState} className="button">Sign Up</button></div>
           </form>
         </div >
       </div>

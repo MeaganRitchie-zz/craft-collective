@@ -2,7 +2,6 @@ import React from 'react'
 import Image from '../images/signinpage.jpg'
 import Logo from '../images/pencil-and-paint-brush.png'
 import { Component } from 'react'
-import ScallopedHeader from './ScallopedHeader'
 
 export default class SignUp extends Component {
 

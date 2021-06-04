@@ -1,7 +1,21 @@
 import React from 'react'
 import Card from './Card.js'
+import { useState } from 'react'
+import CreateNewButton from './CreateNewButton.js'
 
 export default function ScallopedHeader(props) {
+  const [title, setTitle] = useState("")
+  const [image, setImage] = useState("")
+  const [supplies, setSupplies] = useState("")
+  const [directions, setDirections] = useState("")
+
+
+  const renderCards = () => {
+    return props.user.crafts?.map(craft => {
+      return <Card craft={craft} key={craft.id} />
+    })
+  }
+
   return (
     <div>
       <div className="app">
@@ -10,8 +24,15 @@ export default function ScallopedHeader(props) {
           <p id="username">@{props.user.username}</p>
           <p id="crafts-title"> YOUR CRAFTS </p></div>
         <div className="after-scallop">
-          <div className="card-container">
-            <Card />
+          <div className="display-cards">
+            {renderCards()}
+            <CreateNewButton
+              user={props.user} setUser={props.setUser}
+              title={title} setTitle={setTitle}
+              image={image} setImage={setImage}
+              supplies={supplies} setSupplies={setSupplies}
+              directions={directions} setDirections={setDirections}
+            />
           </div>
         </div>
 

@@ -26,7 +26,7 @@ export default class EditForm extends Component {
   render() {
     return (
       <div className="edit-container">
-        <form className="edit-form">
+        <form id="edit-form" className="edit-form">
           <label>Craft Title</label>
           <input name="craftTitle" value={this.state.craftTitle} onChange={this.handleChange} />
           <label>Image</label>

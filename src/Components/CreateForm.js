@@ -9,7 +9,7 @@ export default function CreateForm(props) {
 
   const submitNewCraft = () => {
     let token = localStorage.getItem("token")
-    fetch("http://localhost:3000/crafts", {
+    fetch("https://craft-collective-api.herokuapp.com/crafts", {
       method: "POST",
       headers: {
         Accept: "application/json",
